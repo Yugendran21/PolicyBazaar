@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Grid" parallel="tests">
+
+  <test thread-count="5" name="smokeTest" >
+  <parameter name="node" value="http://localhost:5565/wd/hub "/>
+    <classes>     
+      <class name="TravelTest">
+      <methods>
+      <include name="naviagteToTravelInsurance" />
+      <include name="testValidDetails" />      
+      </methods>
+      </class>  
+      <class name="HealthTest">
+      <methods>
+      <include name="getNameList"/>         
+      </methods>
+      </class>
+      <class name="CarTest">
+      <methods>
+      <include name="invalidDetails" />           
+      </methods>
+      </class>    
+    </classes>    
+  </test> 
+  
+  <test thread-count="5" name="regressionTest">
+  <parameter name="node" value="http://localhost:5566/wd/hub "/>
+    <classes>
+      <class name="TravelTest"/>
+      <class name="CarTest"/>
+      <class name="HealthTest"/>
+    </classes>
+  </test>
+  
+</suite> 
